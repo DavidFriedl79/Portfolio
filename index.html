@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>David Friedl | Elektronik, Technische Informatik & Elektrotechnik</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Portfolio von David Friedl – HTL-Ingenieuranwärter & Bachelorstudent für Angewandte Elektronik und Technische Informatik. Schnittstelle von Hardware, Embedded Systems und Software.">
+  <meta name="keywords" content="David Friedl, Portfolio, Elektronik, Elektrotechnik, Technische Informatik, Embedded Systems, Mikrocontroller, Dactylus, Wien, HTL, Bewerbung, Ingenieur">
+  <meta name="author" content="David Friedl">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background elements & circuit grid -->
+  <div class="circuit-grid" aria-hidden="true"></div>
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+  <canvas id="circuitCanvas" class="circuit-canvas" aria-hidden="true"></canvas>
+
+  <!-- Sticky Header & Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-container">
+      <a href="#home" class="brand-logo" aria-label="David Friedl Startseite">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">DF</span>
+        <span class="logo-slash">/</span>
+        <span class="logo-bracket">&gt;</span>
+        <span class="logo-sub">Engineering</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav" aria-label="Hauptnavigation">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active"><i class="fa-solid fa-house-chimney"></i> Home</a></li>
+          <li><a href="#ueber-mich" class="nav-link"><i class="fa-solid fa-user"></i> Über mich</a></li>
+          <li><a href="#ausbildung" class="nav-link"><i class="fa-solid fa-graduation-cap"></i> Ausbildung</a></li>
+          <li><a href="#erfahrung" class="nav-link"><i class="fa-solid fa-briefcase"></i> Erfahrung</a></li>
+          <li><a href="#skills" class="nav-link"><i class="fa-solid fa-microchip"></i> Skills</a></li>
+          <li><a href="#projekte" class="nav-link"><i class="fa-solid fa-diagram-project"></i> Projekte</a></li>
+          <li><a href="#kontakt" class="nav-link"><i class="fa-solid fa-paper-plane"></i> Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <div class="status-indicator" title="Status: Bachelorstudent & Absolvent">
+          <span class="status-dot"></span>
+          <span class="status-text">Wien • 22 Jahre</span>
+        </div>
+        <a href="#kontakt" class="btn btn-sm btn-outline-cyan">
+          <span>Kontaktieren</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Menü öffnen" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav-backdrop" id="mobileBackdrop"></div>
+  <div class="mobile-drawer" id="mobileDrawer" aria-label="Mobiles Menü">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">DF</span>
+        <span class="logo-slash">/</span>
+        <span class="logo-bracket">&gt;</span>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Menü schließen">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="drawer-profile">
+      <div class="drawer-avatar">DF</div>
+      <div>
+        <h4>David Friedl</h4>
+        <p>Elektronik &amp; Technische Informatik</p>
+      </div>
+    </div>
+    <nav class="drawer-nav">
+      <a href="#home" class="drawer-link active"><i class="fa-solid fa-house-chimney"></i> Home</a>
+      <a href="#ueber-mich" class="drawer-link"><i class="fa-solid fa-user"></i> Über mich</a>
+      <a href="#ausbildung" class="drawer-link"><i class="fa-solid fa-graduation-cap"></i> Ausbildung</a>
+      <a href="#erfahrung" class="drawer-link"><i class="fa-solid fa-briefcase"></i> Erfahrung</a>
+      <a href="#skills" class="drawer-link"><i class="fa-solid fa-microchip"></i> Skills</a>
+      <a href="#projekte" class="drawer-link"><i class="fa-solid fa-diagram-project"></i> Projekte</a>
+      <a href="#kontakt" class="drawer-link"><i class="fa-solid fa-paper-plane"></i> Kontakt</a>
+    </nav>
+    <div class="drawer-footer">
+      <div class="drawer-contact-item">
+        <i class="fa-solid fa-envelope"></i>
+        <span>ddavidffriedl@gmail.com</span>
+      </div>
+      <div class="drawer-contact-item">
+        <i class="fa-solid fa-phone"></i>
+        <span>0699 17338709</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="home" class="hero-section">
+      <div class="section-container hero-grid">
+        <div class="hero-content">
+          <div class="badge-pill hero-badge">
+            <span class="pulse-point"></span>
+            <span>Angewandte Elektronik &amp; Technische Informatik</span>
+          </div>
+
+          <h1 class="hero-headline">
+            Elektronik. <br>
+            Informatik. <br>
+            <span class="gradient-text">Technik.</span>
+          </h1>
+
+          <p class="hero-lead">
+            Ich entwickle technische Lösungen an der Schnittstelle von Elektronik, Software und Automatisierung.
+          </p>
+
+          <p class="hero-description">
+            HTL-Absolvent für Elektronik und Technische Informatik mit Fachschulabschluss in Elektrotechnik, aktueller Bachelorstudent für Angewandte Elektronik und Technische Informatik und zertifiziertem Projektmanagement-Hintergrund.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projekte" class="btn btn-primary">
+              <i class="fa-solid fa-microchip"></i>
+              <span>Meine Projekte</span>
+            </a>
+            <a href="#kontakt" class="btn btn-secondary">
+              <i class="fa-solid fa-envelope"></i>
+              <span>Kontakt</span>
+            </a>
+          </div>
+
+          <!-- Quick facts ribbon -->
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <div class="metric-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+              <div class="metric-text">
+                <span class="metric-title">Bachelor laufend</span>
+                <span class="metric-desc">Angewandte Elektronik &amp; TI</span>
+              </div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-icon"><i class="fa-solid fa-certificate"></i></div>
+              <div class="metric-text">
+                <span class="metric-title">HTL &amp; Fachschule</span>
+                <span class="metric-desc">Elektronik &amp; Elektrotechnik</span>
+              </div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="metric-text">
+                <span class="metric-title">Wien, Österreich</span>
+                <span class="metric-desc">22 Jahre • Sofort erreichbar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Technical Visualization Card -->
+        <div class="hero-visual-card">
+          <div class="tech-window">
+            <div class="window-header">
+              <div class="window-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="window-title">system_architecture.sys // live_bus</div>
+              <div class="window-status"><i class="fa-solid fa-signal"></i> ONLINE</div>
+            </div>
+
+            <div class="window-body">
+              <div class="circuit-diagram-container">
+                <!-- SVG Technical Circuit / Node Diagram -->
+                <svg viewBox="0 0 460 320" class="tech-svg" aria-label="Technische Systemarchitektur Visualisierung">
+                  <defs>
+                    <linearGradient id="cyanPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#38bdf8" />
+                      <stop offset="100%" stop-color="#a855f7" />
+                    </linearGradient>
+                    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8" />
+                      <stop offset="100%" stop-color="#a855f7" stop-opacity="0.8" />
+                    </linearGradient>
+                    <filter id="glowFilter" x="-20%" y="-20%" width="140%" height="140%">
+                      <feGaussianBlur stdDeviation="4" result="blur" />
+                      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                  </defs>
+
+                  <!-- Circuit Board Traces -->
+                  <g class="circuit-traces" stroke="rgba(56, 189, 248, 0.25)" stroke-width="1.5" fill="none">
+                    <path d="M 40 60 L 140 60 L 170 120 L 230 120" />
+                    <path d="M 40 160 L 120 160 L 150 160 L 230 160" />
+                    <path d="M 40 260 L 130 260 L 170 200 L 230 200" />
+                    <path d="M 330 160 L 410 160" />
+                    <path d="M 280 120 L 330 90 L 410 90" />
+                    <path d="M 280 200 L 330 230 L 410 230" />
+                    <path d="M 280 70 L 280 120" stroke-dasharray="3,3" />
+                    <path d="M 280 200 L 280 250" stroke-dasharray="3,3" />
+                  </g>
+
+                  <!-- Animated pulse packets -->
+                  <circle class="pulse-packet" r="3" fill="#38bdf8">
+                    <animateMotion path="M 40 60 L 140 60 L 170 120 L 230 120" dur="3s" repeatCount="indefinite" />
+                  </circle>
+                  <circle class="pulse-packet" r="3" fill="#a855f7">
+                    <animateMotion path="M 40 160 L 120 160 L 150 160 L 230 160" dur="2.4s" repeatCount="indefinite" />
+                  </circle>
+                  <circle class="pulse-packet" r="3" fill="#38bdf8">
+                    <animateMotion path="M 40 260 L 130 260 L 170 200 L 230 200" dur="3.6s" repeatCount="indefinite" />
+                  </circle>
+                  <circle class="pulse-packet" r="3.5" fill="#38bdf8">
+                    <animateMotion path="M 330 160 L 410 160" dur="1.8s" repeatCount="indefinite" />
+                  </circle>
+
+                  <!-- Input Nodes (Left) -->
+                  <g class="node-group">
+                    <rect x="25" y="45" width="70" height="30" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2" />
+                    <text x="60" y="64" fill="#f8fafc" font-size="10" font-family="'JetBrains Mono', monospace" text-anchor="middle">Sensorik</text>
+                    <circle cx="95" cy="60" r="3" fill="#38bdf8" />
+                  </g>
+
+                  <g class="node-group">
+                    <rect x="25" y="145" width="70" height="30" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2" />
+                    <text x="60" y="164" fill="#f8fafc" font-size="10" font-family="'JetBrains Mono', monospace" text-anchor="middle">Hardware</text>
+                    <circle cx="95" cy="160" r="3" fill="#38bdf8" />
+                  </g>
+
+                  <g class="node-group">
+                    <rect x="25" y="245" width="70" height="30" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2" />
+                    <text x="60" y="264" fill="#f8fafc" font-size="10" font-family="'JetBrains Mono', monospace" text-anchor="middle">Elektrik</text>
+                    <circle cx="95" cy="260" r="3" fill="#38bdf8" />
+                  </g>
+
+                  <!-- Central Processing Core / Microcontroller -->
+                  <g class="mcu-core" filter="url(#glowFilter)">
+                    <rect x="200" y="105" width="105" height="110" rx="10" fill="#090d16" stroke="url(#cyanPurple)" stroke-width="2" />
+                    <rect x="210" y="115" width="85" height="90" rx="6" fill="#131c31" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1" />
+                    
+                    <text x="252" y="145" fill="#38bdf8" font-size="11" font-weight="700" font-family="'JetBrains Mono', monospace" text-anchor="middle">EMBEDDED</text>
+                    <text x="252" y="162" fill="#f8fafc" font-size="13" font-weight="800" font-family="'JetBrains Mono', monospace" text-anchor="middle">CORE</text>
+                    <text x="252" y="180" fill="#94a3b8" font-size="9" font-family="'JetBrains Mono', monospace" text-anchor="middle">C++ / Logic</text>
+
+                    <!-- MCU Pins -->
+                    <circle cx="200" cy="120" r="2.5" fill="#38bdf8" />
+                    <circle cx="200" cy="140" r="2.5" fill="#38bdf8" />
+                    <circle cx="200" cy="160" r="2.5" fill="#38bdf8" />
+                    <circle cx="200" cy="180" r="2.5" fill="#38bdf8" />
+                    <circle cx="200" cy="200" r="2.5" fill="#38bdf8" />
+
+                    <circle cx="305" cy="120" r="2.5" fill="#a855f7" />
+                    <circle cx="305" cy="140" r="2.5" fill="#a855f7" />
+                    <circle cx="305" cy="160" r="2.5" fill="#a855f7" />
+                    <circle cx="305" cy="180" r="2.5" fill="#a855f7" />
+                    <circle cx="305" cy="200" r="2.5" fill="#a855f7" />
+                  </g>
+
+                  <!-- Output Nodes (Right) -->
+                  <g class="node-group">
+                    <rect x="365" y="75" width="75" height="30" rx="6" fill="#0f172a" stroke="#a855f7" stroke-width="1.2" />
+                    <text x="402" y="94" fill="#f8fafc" font-size="10" font-family="'JetBrains Mono', monospace" text-anchor="middle">Automatisierung</text>
+                  </g>
+
+                  <g class="node-group">
+                    <rect x="365" y="145" width="75" height="30" rx="6" fill="#0f172a" stroke="#a855f7" stroke-width="1.2" />
+                    <text x="402" y="164" fill="#f8fafc" font-size="10" font-family="'JetBrains Mono', monospace" text-anchor="middle">Software &amp; UI</text>
+                  </g>
+
+                  <g class="node-group">
+                    <rect x="365" y="215" width="75" height="30" rx="6" fill="#0f172a" stroke="#a855f7" stroke-width="1.2" />
+                    <text x="402" y="234" fill="#f8fafc" font-size="10" font-family="'JetBrains Mono', monospace" text-anchor="middle">Messwerte</text>
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Terminal Telemetry Bar -->
+              <div class="telemetry-bar">
+                <div class="telemetry-col">
+                  <span class="t-label">SYSTEM</span>
+                  <span class="t-val text-cyan">ACTIVE</span>
+                </div>
+                <div class="telemetry-col">
+                  <span class="t-label">PROFILE</span>
+                  <span class="t-val">HTL + FS + B.Sc.</span>
+                </div>
+                <div class="telemetry-col">
+                  <span class="t-label">LOCATION</span>
+                  <span class="t-val">WIEN / AT</span>
+                </div>
+                <div class="telemetry-col">
+                  <span class="t-label">FOCUS</span>
+                  <span class="t-val text-purple">INTERFACING</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÜBER MICH SECTION -->
+    <section id="ueber-mich" class="section-padding">
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i class="fa-solid fa-user"></i> Profil &amp; Hintergrund
+          </div>
+          <h2 class="section-title">Über mich</h2>
+          <p class="section-subtitle">
+            Die Verbindung aus handwerklicher Elektrotechnik, fundierter Elektronik und moderner technischer Informatik.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Main Narrative Column -->
+          <div class="about-main-card">
+            <div class="about-avatar-row">
+              <div class="avatar-box">
+                <span class="avatar-initials">DF</span>
+                <span class="avatar-status-badge" title="Status: Aktiv studierend"></span>
+              </div>
+              <div class="about-id-data">
+                <h3 class="about-name">David Friedl</h3>
+                <p class="about-role">Elektronik &amp; Technische Informatik</p>
+                <div class="about-chips">
+                  <span class="about-chip"><i class="fa-solid fa-location-dot"></i> Wien, Österreich</span>
+                  <span class="about-chip"><i class="fa-solid fa-calendar"></i> 22 Jahre</span>
+                  <span class="about-chip"><i class="fa-solid fa-building-columns"></i> Bachelorstudent</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-quote-box">
+              <p class="quote-text">
+                „Meine Ausbildung verbindet klassische Elektrotechnik mit moderner Elektronik und Technischer Informatik. Durch meine schulische Ausbildung und praktische Erfahrung konnte ich sowohl theoretische als auch praktische Kenntnisse in technischen Systemen sammeln.“
+              </p>
+              <p class="quote-text mt-3">
+                „Aktuell vertiefe ich dieses Wissen im Bachelorstudium Angewandte Elektronik und Technische Informatik und möchte meine Kenntnisse künftig in anspruchsvollen technischen Projekten einsetzen.“
+              </p>
+            </div>
+
+            <!-- Engineering Competence Badges -->
+            <div class="competence-pills-row">
+              <div class="comp-badge">
+                <i class="fa-solid fa-bolt text-cyan"></i>
+                <div>
+                  <strong>Praxisnahe Elektrotechnik</strong>
+                  <span>Fachschule &amp; handwerkliche Installation</span>
+                </div>
+              </div>
+              <div class="comp-badge">
+                <i class="fa-solid fa-microchip text-purple"></i>
+                <div>
+                  <strong>Elektronik &amp; Embedded</strong>
+                  <span>HTL-Abschluss mit Diplomprojekt</span>
+                </div>
+              </div>
+              <div class="comp-badge">
+                <i class="fa-solid fa-network-wired text-cyan"></i>
+                <div>
+                  <strong>Technische Informatik</strong>
+                  <span>Software, Vernetzung &amp; Systeme</span>
+                </div>
+              </div>
+              <div class="comp-badge">
+                <i class="fa-solid fa-list-check text-purple"></i>
+                <div>
+                  <strong>Projektmanagement</strong>
+                  <span>Zertifizierte Methoden &amp; Dokumentation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Overview Cards Column -->
+          <div class="about-overview-column">
+            <h3 class="column-heading">
+              <i class="fa-solid fa-layer-group"></i> Ausbildungs-Säulen
+            </h3>
+
+            <!-- Pillar 1 -->
+            <div class="pillar-card active-pillar">
+              <div class="pillar-header">
+                <span class="pillar-index">01</span>
+                <span class="pillar-badge badge-active">Laufend</span>
+              </div>
+              <h4>Bachelor – Angewandte Elektronik &amp; TI</h4>
+              <p>Vertiefung in Systementwicklung, Embedded Systems, Mikrocontroller, Programmierung &amp; Automatisierungstechnik.</p>
+            </div>
+
+            <!-- Pillar 2 -->
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <span class="pillar-index">02</span>
+                <span class="pillar-badge badge-success">Abgeschlossen</span>
+              </div>
+              <h4>HTL – Elektronik &amp; Technische Informatik</h4>
+              <p>Reifeprüfung mit Fokus auf Elektronik, Schaltungstechnik, Digitaltechnik, Messtechnik &amp; Mikrocontrollertechnik.</p>
+            </div>
+
+            <!-- Pillar 3 -->
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <span class="pillar-index">03</span>
+                <span class="pillar-badge badge-success">Abgeschlossen</span>
+              </div>
+              <h4>Fachschule – Elektrotechnik</h4>
+              <p>Fundierte Praxis in elektrischen Anlagen, Installationstechnik, Fehlersuche und Arbeiten nach Schaltplänen.</p>
+            </div>
+
+            <!-- Pillar 4 -->
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <span class="pillar-index">04</span>
+                <span class="pillar-badge badge-success">Zertifiziert</span>
+              </div>
+              <h4>Projektmanagement-Zertifizierung</h4>
+              <p>Strukturierte Projektplanung, Projektorganisation, Koordination, Zeitmanagement und technische Dokumentation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUSBILDUNG SECTION -->
+    <section id="ausbildung" class="section-padding section-alt">
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i class="fa-solid fa-graduation-cap"></i> Akademischer &amp; Schulischer Werdegang
+          </div>
+          <h2 class="section-title">Ausbildung</h2>
+          <p class="section-subtitle">
+            Chronologischer Weg vom soliden Fundament der Elektrotechnik über die HTL bis zum aktuellen Hochschulstudium.
+          </p>
+        </div>
+
+        <div class="timeline-container">
+          <div class="timeline-spine"></div>
+
+          <!-- Station 1: Fachschule Elektrotechnik -->
+          <div class="timeline-item">
+            <div class="timeline-node">
+              <i class="fa-solid fa-plug-circle-bolt"></i>
+            </div>
+            <div class="timeline-content-card">
+              <div class="card-meta-row">
+                <span class="status-pill status-pill-success"><i class="fa-solid fa-circle-check"></i> Abgeschlossen</span>
+                <span class="timeline-period"><i class="fa-regular fa-calendar"></i> Fundamentalausbildung</span>
+              </div>
+              <h3 class="timeline-title">Fachschule – Elektrotechnik</h3>
+              <div class="timeline-institution">
+                <i class="fa-solid fa-school"></i> Fachschule für Elektrotechnik
+              </div>
+              <p class="timeline-desc">
+                Solide praktische und handwerkliche Ausbildung mit starkem Fokus auf elektrische Anlagen, messtechnische Analysen und praxisorientierte Fehlersuche in realen Industrie- und Gebäudeumgebungen.
+              </p>
+              <div class="schwerpunkte-wrapper">
+                <span class="schwerpunkt-label">Relevante Schwerpunkte:</span>
+                <div class="tags-cloud">
+                  <span class="tag">Elektrotechnik</span>
+                  <span class="tag">Elektrische Anlagen</span>
+                  <span class="tag">Schaltungs- &amp; Messtechnik</span>
+                  <span class="tag">Installationstechnik</span>
+                  <span class="tag">Elektrische Fehlersuche</span>
+                  <span class="tag">Schaltpläne &amp; Pläne</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Station 2: HTL Elektronik & Technische Informatik -->
+          <div class="timeline-item">
+            <div class="timeline-node">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <div class="timeline-content-card">
+              <div class="card-meta-row">
+                <span class="status-pill status-pill-success"><i class="fa-solid fa-circle-check"></i> Abgeschlossen</span>
+                <span class="timeline-period"><i class="fa-regular fa-calendar"></i> Ingenieur-Grundausbildung</span>
+              </div>
+              <h3 class="timeline-title">HTL – Elektronik und Technische Informatik</h3>
+              <div class="timeline-institution">
+                <i class="fa-solid fa-building-columns"></i> Höhere Technische Lehranstalt (HTL)
+              </div>
+              <p class="timeline-desc">
+                Umfassende theoretische und praktische Höhere Technische Ausbildung im Fachbereich Elektronik und Technische Informatik. Erfolgreicher Abschluss inklusive technischer Reifeprüfung und Konzeption des Sensor-Diplomprojekts „Dactylus“.
+              </p>
+              <div class="schwerpunkte-wrapper">
+                <span class="schwerpunkt-label">Relevante Schwerpunkte:</span>
+                <div class="tags-cloud">
+                  <span class="tag">Elektronik</span>
+                  <span class="tag">Elektrotechnik</span>
+                  <span class="tag">Technische Informatik</span>
+                  <span class="tag">Programmierung</span>
+                  <span class="tag">Mikrocontrollertechnik</span>
+                  <span class="tag">Digitaltechnik</span>
+                  <span class="tag">Messtechnik</span>
+                  <span class="tag">Automatisierungstechnik</span>
+                  <span class="tag">Schaltungstechnik</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Station 3: Projektmanagement-Zertifizierung -->
+          <div class="timeline-item">
+            <div class="timeline-node">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <div class="timeline-content-card">
+              <div class="card-meta-row">
+                <span class="status-pill status-pill-cert"><i class="fa-solid fa-certificate"></i> Zertifiziert</span>
+                <span class="timeline-period"><i class="fa-regular fa-calendar"></i> Zertifizierung</span>
+              </div>
+              <h3 class="timeline-title">Projektmanagement-Zertifizierung</h3>
+              <div class="timeline-institution">
+                <i class="fa-solid fa-stamp"></i> Zertifizierte Weiterbildung
+              </div>
+              <p class="timeline-desc">
+                Strukturierte Ausbildung in modernen Methoden des Projektmanagements für technische Entwicklungsvorhaben, interdisziplinäre Teamkoordination und professionelle Qualitätssicherung.
+              </p>
+              <div class="schwerpunkte-wrapper">
+                <span class="schwerpunkt-label">Zertifizierte Themenbereiche:</span>
+                <div class="tags-cloud">
+                  <span class="tag">Projektplanung</span>
+                  <span class="tag">Projektorganisation</span>
+                  <span class="tag">Projektkoordination</span>
+                  <span class="tag">Zeitmanagement</span>
+                  <span class="tag">Technische Dokumentation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Station 4: Bachelor Angewandte Elektronik & Technische Informatik -->
+          <div class="timeline-item active-timeline-item">
+            <div class="timeline-node timeline-node-active">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div class="timeline-content-card card-highlight">
+              <div class="card-meta-row">
+                <span class="status-pill status-pill-active"><i class="fa-solid fa-spinner fa-spin"></i> Aktuell laufendes Studium</span>
+                <span class="timeline-period"><i class="fa-regular fa-calendar"></i> Bachelor of Science</span>
+              </div>
+              <h3 class="timeline-title">Bachelor – Angewandte Elektronik und Technische Informatik</h3>
+              <div class="timeline-institution">
+                <i class="fa-solid fa-university"></i> Fachhochschule / Hochschule
+              </div>
+              <p class="timeline-desc">
+                Akademisches Studium zur tiefgehenden Spezialisierung auf ganzheitliche technische Systementwicklung, moderne Embedded Architectures, komplexe Schaltungsentwürfe und softwaregestützte Automatisierungslösungen.
+              </p>
+              <div class="schwerpunkte-wrapper">
+                <span class="schwerpunkt-label">Laufende Studienschwerpunkte:</span>
+                <div class="tags-cloud">
+                  <span class="tag tag-highlight">Angewandte Elektronik</span>
+                  <span class="tag tag-highlight">Elektrotechnik</span>
+                  <span class="tag tag-highlight">Technische Informatik</span>
+                  <span class="tag tag-highlight">Programmierung</span>
+                  <span class="tag tag-highlight">Embedded Systems</span>
+                  <span class="tag tag-highlight">Mikrocontroller</span>
+                  <span class="tag tag-highlight">Digitale Systeme</span>
+                  <span class="tag tag-highlight">Automatisierungstechnik</span>
+                  <span class="tag tag-highlight">Technische Systementwicklung</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ERFAHRUNG SECTION -->
+    <section id="erfahrung" class="section-padding">
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i class="fa-solid fa-briefcase"></i> Berufserfahrung &amp; Praxis
+          </div>
+          <h2 class="section-title">Praktische Erfahrung</h2>
+          <p class="section-subtitle">
+            Reale technische Einsätze vor Ort – von anlagentechnischer Montage über Wartung bis hin zu kompletter IT-Infrastruktur.
+          </p>
+        </div>
+
+        <div class="experience-grid">
+          <!-- Experience Card 1: Ing. Fuhrmann -->
+          <div class="experience-card">
+            <div class="exp-card-header">
+              <div class="exp-icon-box">
+                <i class="fa-solid fa-fan"></i>
+              </div>
+              <div class="exp-header-info">
+                <span class="exp-type">Praktikum / Technische Praxiserfahrung</span>
+                <h3 class="exp-company">Ing. Fuhrmann</h3>
+                <h4 class="exp-role">Lüftungs- und Klimatechnik</h4>
+              </div>
+            </div>
+
+            <div class="exp-divider"></div>
+
+            <p class="exp-summary">
+              Aktive Mitwirkung bei der Installation, Instandhaltung und mechatronischen Betreuung von gewerblichen Lüftungs- und Klimasystemen auf Großbaustellen und Betriebsanlagen.
+            </p>
+
+            <div class="exp-tasks">
+              <h5 class="tasks-title"><i class="fa-solid fa-clipboard-check"></i> Tätigkeiten &amp; Verantwortungsbereiche:</h5>
+              <ul class="tasks-list">
+                <li>
+                  <i class="fa-solid fa-check task-check"></i>
+                  <span>Mitarbeit bei der fachgerechten Montage und Installation von Lüftungs- und Klimaanlagen</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check task-check"></i>
+                  <span>Unterstützung bei präventiven Wartungs- und Instandhaltungsarbeiten</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check task-check"></i>
+                  <span>Durchführung von technischen Arbeiten direkt auf anspruchsvollen Baustellen</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check task-check"></i>
+                  <span>Präzise elektromechanische Arbeiten im gesamten Bereich Lüftungs- und Klimatechnik</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check task-check"></i>
+                  <span>Unterstützung bei Service-, Störungs- und Reparaturarbeiten an bestehenden Systemen</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check task-check"></i>
+                  <span>Zuverlässiges Arbeiten nach detaillierten technischen Vorgaben, Maßskizzen und Plänen</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="exp-tags-footer">
+              <span class="tag">Anlagentechnik</span>
+              <span class="tag">Montage &amp; Wartung</span>
+              <span class="tag">Baustellentechnik</span>
+              <span class="tag">Planlesen</span>
+              <span class="tag">Fehlerbehebung</span>
+            </div>
+          </div>
+
+          <!-- Experience Card 2: EDV-Räume -->
+          <div class="experience-card">
+            <div class="exp-card-header">
+              <div class="exp-icon-box">
+                <i class="fa-solid fa-server"></i>
+              </div>
+              <div class="exp-header-info">
+                <span class="exp-type">Technische Praxiserfahrung</span>
+                <h3 class="exp-company">Einrichtung von EDV-Räumen</h3>
+                <h4 class="exp-role">IT-Infrastruktur &amp; Netzwerktechnik</h4>
+              </div>
+            </div>
+
+            <div class="exp-divider"></div>
+
+            <p class="exp-summary">
+              Strukturierte Konfiguration, physische Verkabelung und betriebsfertige Inbetriebnahme von EDV-Arbeitsplätzen, Serverschränken und Netzwerkkomponenten in Bildungseinrichtungen / Betrieben.
+            </p>
+
+            <div class="exp-tasks">
+              <h5 class="tasks-title"><i class="fa-solid fa-clipboard-check"></i> Tätigkeiten &amp; Verantwortungsbereiche:</h5>
+              <ul class="tasks-list">
+                <li>
+                  <i class="fa-solid fa-check task-check"></i>
+                  <span>Einrichtung und vollständige technische Ausstattung moderner EDV-Räume</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check task-check"></i>
+                  <span>Fachgerechte Installation, Verlegung und strukturierte Verkabelung von IT-Hardware</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check task-check"></i>
+                  <span>Ergonomischer und normgerechter Aufbau kompletter EDV-Arbeitsplätze</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check task-check"></i>
+                  <span>Installation und physischer Anschluss aktiver und passiver Netzwerkkomponenten</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check task-check"></i>
+                  <span>Unterstützung bei der Inbetriebnahme, Netzwerktunings und systematischer Fehlerbehebung</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="exp-tags-footer">
+              <span class="tag">IT-Hardware</span>
+              <span class="tag">Netzwerkgrundlagen</span>
+              <span class="tag">Strukturierte Verkabelung</span>
+              <span class="tag">Inbetriebnahme</span>
+              <span class="tag">Hardware-Rollout</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section-padding section-alt">
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i class="fa-solid fa-microchip"></i> Technisches Kompetenzprofil
+          </div>
+          <h2 class="section-title">Technische Skills</h2>
+          <p class="section-subtitle">
+            Strukturiert nach Fachgebieten – basierend auf echten schulischen, akademischen und praktischen Qualifikationen ohne willkürliche Prozentwerte.
+          </p>
+        </div>
+
+        <!-- Filter Tabs & Quick Search -->
+        <div class="skills-filter-bar">
+          <div class="filter-tabs" role="tablist">
+            <button class="filter-tab active" data-category="all">
+              <i class="fa-solid fa-border-all"></i> Alle Skills (16)
+            </button>
+            <button class="filter-tab" data-category="hardware">
+              <i class="fa-solid fa-bolt"></i> Elektrotechnik &amp; Hardware
+            </button>
+            <button class="filter-tab" data-category="embedded">
+              <i class="fa-solid fa-microchip"></i> Embedded &amp; Digital
+            </button>
+            <button class="filter-tab" data-category="software">
+              <i class="fa-solid fa-code"></i> Software &amp; Informatik
+            </button>
+            <button class="filter-tab" data-category="automation">
+              <i class="fa-solid fa-sliders"></i> Mess- &amp; Automatisierung
+            </button>
+            <button class="filter-tab" data-category="management">
+              <i class="fa-solid fa-list-check"></i> Management &amp; Doku
+            </button>
+          </div>
+
+          <div class="skill-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="skillSearchInput" placeholder="Skill suchen (z. B. Mikrocontroller, Schaltung...)" aria-label="Skills durchsuchen">
+          </div>
+        </div>
+
+        <!-- Skills Grid Container -->
+        <div class="skills-grid" id="skillsGrid">
+          <!-- Hardware & Elektrotechnik -->
+          <div class="skill-card" data-category="hardware">
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap"><i class="fa-solid fa-bolt"></i></div>
+              <span class="skill-cat-pill">Elektrotechnik</span>
+            </div>
+            <h3 class="skill-name">Elektrotechnik</h3>
+            <p class="skill-context">Fundierte Kenntnisse aus Fachschule, HTL und Bachelorstudium. Elektrische Anlagen, Schutzmaßnahmen und Netze.</p>
+          </div>
+
+          <div class="skill-card" data-category="hardware">
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap"><i class="fa-solid fa-wave-square"></i></div>
+              <span class="skill-cat-pill">Elektronik</span>
+            </div>
+            <h3 class="skill-name">Elektronik</h3>
+            <p class="skill-context">Diskrete Halbleiter, Signalaufbereitung, analoge und digitale Grundschaltungen sowie Sensoranbindungen.</p>
+          </div>
+
+          <div class="skill-card" data-category="hardware">
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap"><i class="fa-solid fa-compass-drafting"></i></div>
+              <span class="skill-cat-pill">Hardware</span>
+            </div>
+            <h3 class="skill-name">Schaltungstechnik</h3>
+            <p class="skill-context">Entwicklung, Dimensionierung und Analyse elektronischer Schaltungen vom Konzept bis zum Funktionsmuster.</p>
+          </div>
+
+          <div class="skill-card" data-category="hardware">
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap"><i class="fa-solid fa-file-invoice"></i></div>
+              <span class="skill-cat-pill">Dokumentation</span>
+            </div>
+            <h3 class="skill-name">Schaltplanlesen</h3>
+            <p class="skill-context">Sichere Interpretation und Fehlerlokalisierung in komplexen Stromlauf-, Verdrahtungs- und Funktionsplänen.</p>
+          </div>
+
+          <div class="skill-card" data-category="hardware">
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap"><i class="fa-solid fa-desktop"></i></div>
+              <span class="skill-cat-pill">IT-Hardware</span>
+            </div>
+            <h3 class="skill-name">IT-Hardware</h3>
+            <p class="skill-context">Systemkonfiguration, Hardwareaufbau, Peripheriekomponenten und physikalischer Ausbau von Recheneinheiten.</p>
+          </div>
+
+          <!-- Embedded & Digital -->
+          <div class="skill-card" data-category="embedded">
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap"><i class="fa-solid fa-microchip"></i></div>
+              <span class="skill-cat-pill">Embedded</span>
+            </div>
+            <h3 class="skill-name">Mikrocontroller</h3>
+            <p class="skill-context">Programmierung und Hardwareanbindung von Controller-Familien (z. B. Arduino, ATmega, ARM-Konzepte), Register &amp; I/O.</p>
+          </div>
+
+          <div class="skill-card" data-category="embedded">
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap"><i class="fa-solid fa-memory"></i></div>
+              <span class="skill-cat-pill">Embedded</span>
+            </div>
+            <h3 class="skill-name">Embedded Systems</h3>
+            <p class="skill-context">Echtzeit-nahe Erfassung von Sensordaten, Interrupt-Handling, Buskommunikation und geräteseitige Verarbeitung.</p>
+          </div>
+
+          <div class="skill-card" data-category="embedded">
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap"><i class="fa-solid fa-binary"></i></div>
+              <span class="skill-cat-pill">Digital</span>
+            </div>
+            <h3 class="skill-name">Digitaltechnik</h3>
+            <p class="skill-context">Logikgatter, Schaltwerke, Zustandsautomaten, Multiplexer und sequentielle Digitalsysteme.</p>
+          </div>
+
+          <!-- Software & Technische Informatik -->
+          <div class="skill-card" data-category="software">
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap"><i class="fa-solid fa-terminal"></i></div>
+              <span class="skill-cat-pill">Informatik</span>
+            </div>
+            <h3 class="skill-name">Technische Informatik</h3>
+            <p class="skill-context">Rechnerarchitekturen, Betriebssystemgrundlagen, Schnittstellen sowie hardwarenahe Softwarekonzepte.</p>
+          </div>
+
+          <div class="skill-card" data-category="software">
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap"><i class="fa-solid fa-code"></i></div>
+              <span class="skill-cat-pill">Programmierung</span>
+            </div>
+            <h3 class="skill-name">Programmierung</h3>
+            <p class="skill-context">Strukturierte und objektorientierte Softwareentwicklung, Algorithmen, Firmwareentwicklung für Controller.</p>
+          </div>
+
+          <div class="skill-card" data-category="software">
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap"><i class="fa-solid fa-network-wired"></i></div>
+              <span class="skill-cat-pill">Netzwerk</span>
+            </div>
+            <h3 class="skill-name">Netzwerkgrundlagen</h3>
+            <p class="skill-context">IP-Adressierung, Routing, Switching, strukturierte Gebäude- und Raumverkabelung sowie Netzwerkinfrastruktur.</p>
+          </div>
+
+          <!-- Mess- & Automatisierung -->
+          <div class="skill-card" data-category="automation">
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap"><i class="fa-solid fa-chart-line"></i></div>
+              <span class="skill-cat-pill">Messtechnik</span>
+            </div>
+            <h3 class="skill-name">Messtechnik</h3>
+            <p class="skill-context">Oszilloskope, Multimeter, Frequenzgeneratoren, analoge &amp; digitale Sensorwerterfassung und Kalibrierung.</p>
+          </div>
+
+          <div class="skill-card" data-category="automation">
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap"><i class="fa-solid fa-gears"></i></div>
+              <span class="skill-cat-pill">Automatisierung</span>
+            </div>
+            <h3 class="skill-name">Automatisierungstechnik</h3>
+            <p class="skill-context">Steuerungs- und Regelungstechnik, Prozessautomatisierung, Sensor-Aktor-Kopplung und industrielle Schnittstellen.</p>
+          </div>
+
+          <div class="skill-card" data-category="automation">
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap"><i class="fa-solid fa-wrench"></i></div>
+              <span class="skill-cat-pill">Troubleshooting</span>
+            </div>
+            <h3 class="skill-name">Fehleranalyse / Troubleshooting</h3>
+            <p class="skill-context">Systematische Signalverfolgung, messtechnische Fehlereingrenzung und Behebung hardware- und softwareseitiger Probleme.</p>
+          </div>
+
+          <!-- Management & Doku -->
+          <div class="skill-card" data-category="management">
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap"><i class="fa-solid fa-list-check"></i></div>
+              <span class="skill-cat-pill">Zertifiziert</span>
+            </div>
+            <h3 class="skill-name">Projektmanagement</h3>
+            <p class="skill-context">Zertifizierte Methoden: Phasenmodelle, Meilensteinplanung, Arbeitspaketdefinition, Ressourcen- &amp; Risikomanagement.</p>
+          </div>
+
+          <div class="skill-card" data-category="management">
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap"><i class="fa-solid fa-book"></i></div>
+              <span class="skill-cat-pill">Dokumentation</span>
+            </div>
+            <h3 class="skill-name">Technische Dokumentation</h3>
+            <p class="skill-context">Normgerechte Berichterstellung, Datenblätter, Betriebsanleitungen, Prüfprotokolle und wissenschaftliche Arbeiten.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJEKTE SECTION (FOKUS: DACTYLUS) -->
+    <section id="projekte" class="section-padding">
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i class="fa-solid fa-diagram-project"></i> Technische Ingenieurarbeit
+          </div>
+          <h2 class="section-title">Diplom- &amp; Abschlussprojekt</h2>
+          <p class="section-subtitle">
+            „Dactylus“ – Konzeption, Schaltungsentwurf, Sensorfusion und mechanischer Aufbau eines 12-Kanal Fingerkraft-Messsystems.
+          </p>
+        </div>
+
+        <!-- Featured Project Hero Card -->
+        <div class="featured-project-card">
+          <div class="project-badge-top">
+            <span class="pill-featured"><i class="fa-solid fa-star"></i> Featured Highlight</span>
+            <span class="pill-status">HTL Diplomarbeit • Erfolgreich abgeschlossen</span>
+          </div>
+
+          <div class="project-card-grid">
+            <!-- Left Info Block -->
+            <div class="project-info-side">
+              <div class="project-title-area">
+                <span class="project-tag-cat">Elektronik • Sensorik • Embedded</span>
+                <h3 class="project-main-title">Dactylus</h3>
+                <h4 class="project-main-subtitle">Fingerkraft-Messsystem zur präzisen Erfassung von Druck- &amp; Kraftwerten</h4>
+              </div>
+
+              <p class="project-long-desc">
+                Dactylus ist ein hochspezialisiertes mechatronisches Fingerkraft-Messsystem, das entwickelt wurde, um die Kraft- und Druckwerte mehrerer Finger synchron und hochfrequent zu erfassen. Durch die Kombination von 12 analogen FSR-Kraftsensoren, einer dezidierten Messwerterfassungseinheit auf Mikrocontroller-Basis und einer integrierten Display-Anzeige ermöglicht das System die reproduzierbare Erfassung von Fingerkräften für ergonomische, therapeutische oder messtechnische Analysen.
+              </p>
+
+              <!-- Components Checklist -->
+              <div class="project-key-components">
+                <h5 class="comp-list-title"><i class="fa-solid fa-microchip"></i> Systemkomponenten &amp; Technologien:</h5>
+                <div class="components-grid">
+                  <div class="comp-pill"><i class="fa-solid fa-gauge-high"></i> 12 Kraftsensoren</div>
+                  <div class="comp-pill"><i class="fa-solid fa-fingerprint"></i> FSR-Sensorik</div>
+                  <div class="comp-pill"><i class="fa-solid fa-microchip"></i> Arduino Mikrocontroller</div>
+                  <div class="comp-pill"><i class="fa-solid fa-bolt"></i> Schaltungselektronik</div>
+                  <div class="comp-pill"><i class="fa-solid fa-chart-line"></i> Messwerterfassung</div>
+                  <div class="comp-pill"><i class="fa-solid fa-tv"></i> Integriertes Display</div>
+                  <div class="comp-pill"><i class="fa-solid fa-cube"></i> Gehäusekonstruktion</div>
+                  <div class="comp-pill"><i class="fa-solid fa-file-contract"></i> Technische Dokumentation</div>
+                </div>
+              </div>
+
+              <div class="project-btn-row">
+                <button class="btn btn-primary" id="openDactylusModalBtn">
+                  <i class="fa-solid fa-circle-info"></i>
+                  <span>Mehr erfahren &amp; Systemdetails</span>
+                </button>
+                <button class="btn btn-secondary" id="interactiveTestBtn">
+                  <i class="fa-solid fa-play"></i>
+                  <span>Live-Sensorik testen</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Interactive / Technical Visualization Block -->
+            <div class="project-visual-side">
+              <div class="interactive-simulator-card">
+                <div class="sim-header">
+                  <div class="sim-title">
+                    <i class="fa-solid fa-wave-square text-cyan"></i>
+                    <span>Dactylus Live Sensor Simulator (12 Channels)</span>
+                  </div>
+                  <span class="sim-badge" id="simLiveBadge">Simulationsmodus</span>
+                </div>
+
+                <!-- 12 Channels Force Visualizer -->
+                <div class="channels-matrix-container">
+                  <div class="hand-representation">
+                    <div class="hand-label">HAND A (Kanäle 1 - 6)</div>
+                    <div class="sensor-channel-row">
+                      <div class="sensor-node active-channel" data-channel="1" title="Kanal 1: Daumen">
+                        <span class="c-id">CH1</span>
+                        <div class="c-bar-bg"><div class="c-bar-fill" style="height: 65%;"></div></div>
+                        <span class="c-val">6.5 N</span>
+                      </div>
+                      <div class="sensor-node" data-channel="2" title="Kanal 2: Zeigefinger">
+                        <span class="c-id">CH2</span>
+                        <div class="c-bar-bg"><div class="c-bar-fill" style="height: 82%;"></div></div>
+                        <span class="c-val">8.2 N</span>
+                      </div>
+                      <div class="sensor-node" data-channel="3" title="Kanal 3: Mittelfinger">
+                        <span class="c-id">CH3</span>
+                        <div class="c-bar-bg"><div class="c-bar-fill" style="height: 74%;"></div></div>
+                        <span class="c-val">7.4 N</span>
+                      </div>
+                      <div class="sensor-node" data-channel="4" title="Kanal 4: Ringfinger">
+                        <span class="c-id">CH4</span>
+                        <div class="c-bar-bg"><div class="c-bar-fill" style="height: 48%;"></div></div>
+                        <span class="c-val">4.8 N</span>
+                      </div>
+                      <div class="sensor-node" data-channel="5" title="Kanal 5: Kleiner Finger">
+                        <span class="c-id">CH5</span>
+                        <div class="c-bar-bg"><div class="c-bar-fill" style="height: 35%;"></div></div>
+                        <span class="c-val">3.5 N</span>
+                      </div>
+                      <div class="sensor-node" data-channel="6" title="Kanal 6: Handflächenstütze">
+                        <span class="c-id">CH6</span>
+                        <div class="c-bar-bg"><div class="c-bar-fill" style="height: 52%;"></div></div>
+                        <span class="c-val">5.2 N</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="hand-representation">
+                    <div class="hand-label">HAND B (Kanäle 7 - 12)</div>
+                    <div class="sensor-channel-row">
+                      <div class="sensor-node" data-channel="7" title="Kanal 7: Daumen">
+                        <span class="c-id">CH7</span>
+                        <div class="c-bar-bg"><div class="c-bar-fill" style="height: 58%;"></div></div>
+                        <span class="c-val">5.8 N</span>
+                      </div>
+                      <div class="sensor-node" data-channel="8" title="Kanal 8: Zeigefinger">
+                        <span class="c-id">CH8</span>
+                        <div class="c-bar-bg"><div class="c-bar-fill" style="height: 79%;"></div></div>
+                        <span class="c-val">7.9 N</span>
+                      </div>
+                      <div class="sensor-node" data-channel="9" title="Kanal 9: Mittelfinger">
+                        <span class="c-id">CH9</span>
+                        <div class="c-bar-bg"><div class="c-bar-fill" style="height: 71%;"></div></div>
+                        <span class="c-val">7.1 N</span>
+                      </div>
+                      <div class="sensor-node" data-channel="10" title="Kanal 10: Ringfinger">
+                        <span class="c-id">CH10</span>
+                        <div class="c-bar-bg"><div class="c-bar-fill" style="height: 42%;"></div></div>
+                        <span class="c-val">4.2 N</span>
+                      </div>
+                      <div class="sensor-node" data-channel="11" title="Kanal 11: Kleiner Finger">
+                        <span class="c-id">CH11</span>
+                        <div class="c-bar-bg"><div class="c-bar-fill" style="height: 31%;"></div></div>
+                        <span class="c-val">3.1 N</span>
+                      </div>
+                      <div class="sensor-node" data-channel="12" title="Kanal 12: Handflächenstütze">
+                        <span class="c-id">CH12</span>
+                        <div class="c-bar-bg"><div class="c-bar-fill" style="height: 49%;"></div></div>
+                        <span class="c-val">4.9 N</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Simulation Controls & Info -->
+                <div class="sim-footer">
+                  <div class="sim-metric">
+                    <span class="sm-label">GESAMTKRAFT</span>
+                    <span class="sm-value" id="totalForceVal">68.6 N</span>
+                  </div>
+                  <div class="sim-metric">
+                    <span class="sm-label">SAMPLING RATE</span>
+                    <span class="sm-value text-cyan">100 Hz</span>
+                  </div>
+                  <div class="sim-metric">
+                    <span class="sm-label">MCU BUS</span>
+                    <span class="sm-value text-purple">SPI / ADC</span>
+                  </div>
+                  <button class="sim-trigger-btn" id="triggerPulseBtn" title="Test-Impuls simulieren">
+                    <i class="fa-solid fa-bolt"></i> Kraftimpuls
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT SECTION -->
+    <section id="kontakt" class="section-padding section-alt">
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i class="fa-solid fa-paper-plane"></i> Direkter Kontakt
+          </div>
+          <h2 class="section-title">Kontakt aufnehmen</h2>
+          <p class="section-subtitle">
+            Du hast ein interessantes technisches Projekt oder möchtest dich über eine berufliche Möglichkeit austauschen? Ich freue mich über eine Nachricht.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Channels Column -->
+          <div class="contact-channels-card">
+            <h3 class="channels-heading">
+              <i class="fa-solid fa-address-card"></i> Direkte Erreichbarkeit
+            </h3>
+            <p class="channels-desc">
+              Gerne stehe ich für fachliche Gespräche, Vorstellungsinterviews und technische Projektanfragen in Wien und Umgebung zur Verfügung.
+            </p>
+
+            <div class="contact-card-list">
+              <!-- Email Item -->
+              <div class="contact-item">
+                <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="ci-content">
+                  <span class="ci-label">E-Mail-Adresse</span>
+                  <a href="mailto:ddavidffriedl@gmail.com" class="ci-value" id="emailContactLink">ddavidffriedl@gmail.com</a>
+                </div>
+                <button class="ci-copy-btn" data-copy="ddavidffriedl@gmail.com" title="E-Mail kopieren">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+
+              <!-- Phone Item -->
+              <div class="contact-item">
+                <div class="ci-icon"><i class="fa-solid fa-phone"></i></div>
+                <div class="ci-content">
+                  <span class="ci-label">Telefonnummer</span>
+                  <a href="tel:069917338709" class="ci-value">0699 17338709</a>
+                </div>
+                <button class="ci-copy-btn" data-copy="069917338709" title="Nummer kopieren">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+
+              <!-- Location Item -->
+              <div class="contact-item">
+                <div class="ci-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="ci-content">
+                  <span class="ci-label">Standort</span>
+                  <span class="ci-value">Wien, Österreich</span>
+                </div>
+              </div>
+
+              <!-- GitHub Item -->
+              <div class="contact-item">
+                <div class="ci-icon"><i class="fa-brands fa-github"></i></div>
+                <div class="ci-content">
+                  <span class="ci-label">GitHub Profil</span>
+                  <a href="https://github.com/DavidFriedl79" target="_blank" rel="noopener noreferrer" class="ci-value">
+                    github.com/DavidFriedl79 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- vCard / Quick Save Action -->
+            <div class="vcard-box">
+              <button class="btn btn-outline-cyan w-100" id="downloadVCardBtn">
+                <i class="fa-solid fa-id-card"></i>
+                <span>Visitenkarte herunterladen (vCard)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive Message Form -->
+          <div class="contact-form-card">
+            <h3 class="channels-heading">
+              <i class="fa-solid fa-message"></i> Nachricht senden
+            </h3>
+            <p class="channels-desc">
+              Schreibe mir eine Nachricht. Das Formular generiert direkt eine vorbereitete E-Mail an mein Postfach.
+            </p>
+
+            <form id="contactForm" class="tech-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="senderName"><i class="fa-solid fa-user"></i> Dein Name / Unternehmen</label>
+                  <input type="text" id="senderName" required placeholder="z. B. Dr. Müller / Siemens AG">
+                </div>
+                <div class="form-group">
+                  <label for="senderEmail"><i class="fa-solid fa-at"></i> Deine E-Mail-Adresse</label>
+                  <input type="email" id="senderEmail" required placeholder="name@unternehmen.at">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="subjectSelect"><i class="fa-solid fa-tag"></i> Betreff / Thema</label>
+                <select id="subjectSelect" required>
+                  <option value="Karrieremöglichkeit / Vorstellungsgespräch">Karrieremöglichkeit / Vorstellungsgespräch</option>
+                  <option value="Technisches Projekt / Zusammenarbeit">Technisches Projekt / Zusammenarbeit</option>
+                  <option value="Fachlicher Austausch (Elektronik / IT)">Fachlicher Austausch (Elektronik / IT)</option>
+                  <option value="Frage zum Dactylus-Projekt">Frage zum Dactylus-Projekt</option>
+                  <option value="Sonstige Anfrage">Sonstige Anfrage</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="senderMessage"><i class="fa-solid fa-pen"></i> Deine Nachricht</label>
+                <textarea id="senderMessage" rows="5" required placeholder="Guten Tag Herr Friedl, wir haben Ihr technisches Profil gesehen und möchten uns gerne mit Ihnen über..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>E-Mail vorbereiten &amp; absenden</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- DACTYLUS DETAIL MODAL -->
+  <div class="modal-backdrop" id="dactylusModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="modal-badge"><i class="fa-solid fa-microchip"></i> Diplomarbeit</div>
+          <h2 id="modalTitle">Dactylus – 12-Kanal Fingerkraft-Messsystem</h2>
+        </div>
+        <button class="modal-close" id="closeModalBtn" aria-label="Modal schließen">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Architecture Diagram Visual -->
+        <div class="modal-tech-schema">
+          <div class="schema-step">
+            <div class="schema-icon"><i class="fa-solid fa-hand-holding-droplet"></i></div>
+            <div class="schema-title">12x FSR-Sensoren</div>
+            <div class="schema-sub">Druckabhängiger Widerstand an Fingerkuppen</div>
+          </div>
+          <div class="schema-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="schema-step">
+            <div class="schema-icon"><i class="fa-solid fa-wave-square"></i></div>
+            <div class="schema-title">Signalaufbereitung</div>
+            <div class="schema-sub">Spannungsteiler, Glättung &amp; Entkopplung</div>
+          </div>
+          <div class="schema-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="schema-step">
+            <div class="schema-icon"><i class="fa-solid fa-microchip"></i></div>
+            <div class="schema-title">Arduino MCU</div>
+            <div class="schema-sub">ADC Wandlung, Kalibrierung, Mittelwertbildung</div>
+          </div>
+          <div class="schema-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="schema-step">
+            <div class="schema-icon"><i class="fa-solid fa-tv"></i></div>
+            <div class="schema-title">Display &amp; Ausgabe</div>
+            <div class="schema-sub">Echtzeitwertanzeige &amp; serielle Schnittstelle</div>
+          </div>
+        </div>
+
+        <div class="modal-sections-grid">
+          <div class="modal-section-card">
+            <h4><i class="fa-solid fa-bullseye text-cyan"></i> Problemstellung &amp; Ziel</h4>
+            <p>
+              Bei vielen ergotherapeutischen Analysen, biomechanischen Untersuchungen und ergonomischen Werkzeugoptimierungen ist die isolierte Messung einzelner Fingerkräfte entscheidend. Herkömmliche Systeme erfassen meist nur die Gesamthandkraft oder sind unhandlich. Ziel des Projekts war ein portables, ergonomisches Messgerät zur simultanen Erfassung von 12 diskreten Kraftmesspunkten.
+            </p>
+          </div>
+
+          <div class="modal-section-card">
+            <h4><i class="fa-solid fa-layer-group text-purple"></i> Sensorik &amp; Schaltung</h4>
+            <p>
+              Einsatz von 12 Force Sensitive Resistors (FSR). Da der Widerstand bei steigender Krafteinwirkung reziprok abnimmt, wird das Signal über präzise berechnete Spannungsteilerkonditionierungen in eine proportionale Gleichspannung gewandelt und über die analogen Eingänge des Mikrocontrollers abgetastet.
+            </p>
+          </div>
+
+          <div class="modal-section-card">
+            <h4><i class="fa-solid fa-code text-cyan"></i> Mikrocontroller &amp; Firmware</h4>
+            <p>
+              Die Firmware auf dem Arduino realisiert eine zyklische Abtastung aller 12 Kanäle, lineare Kennlinienkorrektur sowie dynamische Nullpunktkalibrierung (Tare-Funktion). Die Messdaten werden zur direkten Visualisierung auf das Display geschrieben und können über die Schnittstelle ausgegeben werden.
+            </p>
+          </div>
+
+          <div class="modal-section-card">
+            <h4><i class="fa-solid fa-cube text-purple"></i> Gehäuse &amp; Dokumentation</h4>
+            <p>
+              Konstruktion eines ergonomischen Gehäuses zur stabilen Platzierung der Finger, Schutz der empfindlichen Sensorleitungen und Integration des Displays. Das Projekt wurde mit einer vollständigen technischen Dokumentation nach ingenieurmäßigen Standards abgeschlossen.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="modalCloseBtnSecondary">Schließen</button>
+        <a href="#kontakt" class="btn btn-primary" id="modalContactBtn">
+          <i class="fa-solid fa-envelope"></i>
+          <span>Fragen zum Projekt stellen</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification element -->
+  <div class="toast-notification" id="toastNotification" role="alert" aria-live="polite"></div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <span class="logo-bracket">&lt;</span>
+            <span class="logo-text">DF</span>
+            <span class="logo-slash">/</span>
+            <span class="logo-bracket">&gt;</span>
+            <span class="logo-sub">Engineering</span>
+          </div>
+          <p class="footer-bio">
+            David Friedl – HTL-Absolvent &amp; Bachelorstudent für Angewandte Elektronik und Technische Informatik.
+          </p>
+        </div>
+
+        <div class="footer-nav-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#ueber-mich">Über mich</a></li>
+            <li><a href="#ausbildung">Ausbildung</a></li>
+            <li><a href="#erfahrung">Erfahrung</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projekte">Projekte</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-col">
+          <h5>Ausbildung</h5>
+          <ul>
+            <li><span>Bachelorstudium Angewandte Elektronik &amp; TI</span></li>
+            <li><span>HTL Elektronik &amp; Technische Informatik</span></li>
+            <li><span>Fachschule Elektrotechnik</span></li>
+            <li><span>Projektmanagement-Zertifizierung</span></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-col">
+          <h5>Kontakt &amp; Profile</h5>
+          <ul>
+            <li><a href="mailto:ddavidffriedl@gmail.com"><i class="fa-solid fa-envelope"></i> ddavidffriedl@gmail.com</a></li>
+            <li><a href="tel:069917338709"><i class="fa-solid fa-phone"></i> 0699 17338709</a></li>
+            <li><a href="https://github.com/DavidFriedl79" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub: DavidFriedl79</a></li>
+            <li><span><i class="fa-solid fa-location-dot"></i> Wien, Österreich</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; <span id="currentYear">2026</span> David Friedl. Alle Rechte vorbehalten. Professionelles Engineering-Portfolio.
+        </div>
+        <div class="footer-tech-stack">
+          <span>Vanilla HTML5</span> • <span>Modern CSS3 Grid/Flex</span> • <span>ES6+</span> • <span>Ultra Fast &amp; Clean</span>
+        </div>
+        <a href="#home" class="back-to-top" aria-label="Zurück nach oben">
+          <i class="fa-solid fa-chevron-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
